@@ -16,14 +16,16 @@ rule "First Rule"
         item1 : UserInfo (tipRizika == UserInfo.TipRizika.SLAB, 
         				destinacija == UserInfo.Destinacija.SRBIJA)
     then
+    //iz baze
         double pk1 = 150.00;
         double pk2 = 200.00;
         double pk3 = 250.00;
-        
+   //iz baze
         double kR = item1.getKoefRizika();
         double kO = item1.getKoefOdraslih();
         double kD = item1.getKoefDece();
         double kDst = item1.getKoefDestinacije();
+   //sa forme
         int brO = item1.getBrOdraslih();
         int brD = item1.getBrDece();
         int brDn = item1.getBrDana();

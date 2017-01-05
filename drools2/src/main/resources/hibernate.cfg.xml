@@ -6,5 +6,32 @@
 <hibernate-configuration>
     <session-factory>        
         <mapping class="main.java.pojo.UserInfo" />
+        <mapping class="main.java.entity.Bank"/>
+        <mapping class="main.java.entity.BankAccount"/>
+        <mapping class="main.java.entity.BusinessYear"/>
+        <mapping class="main.java.entity.Car"/>
+        <mapping class="main.java.entity.City"/>
+        <mapping class="main.java.entity.Client"/>
+        <mapping class="main.java.entity.Coefficient"/>
+        <mapping class="main.java.entity.Currency"/>
+        <mapping class="main.java.entity.Destination"/>
+        <mapping class="main.java.entity.Employee"/>
+        <mapping class="main.java.entity.EmployeeRole"/>
+        <mapping class="main.java.entity.Home"/>
+        <mapping class="main.java.entity.InsuranceCompany"/>
+        <mapping class="main.java.entity.ItemsOfPackage"/>
+        <mapping class="main.java.entity.PackageP"/>
+        <mapping class="main.java.entity.Pdv"/>
+        <mapping class="main.java.entity.Policy"/>
+        <mapping class="main.java.entity.Pricelist"/>
+        <mapping class="main.java.entity.PricelistItem"/>
+        <mapping class="main.java.entity.RateOfPdv"/>
+        <mapping class="main.java.entity.Risk"/>
+        <mapping class="main.java.entity.StateOfOrigin"/>
+        <mapping class="main.java.entity.SubjectOfInsurance"/>
+        <mapping class="main.java.entity.TypeOfClient"/>
+        <mapping class="main.java.entity.TypeOfHome"/>
+        <mapping class="main.java.entity.TypeOfInsurance"/>
+        <mapping class="main.java.entity.TypeOfRisk"/>
     </session-factory>         
 </hibernate-configuration>
