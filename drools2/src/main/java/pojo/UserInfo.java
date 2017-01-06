@@ -16,6 +16,9 @@ public class UserInfo {
 	private double koefDestinacije;
 	private TipRizika tipRizika;
 	private Destinacija destinacija;
+	private double osnovica1;
+	private double osnovica2;
+	private double osnovica3;
 	private double cenaPaketa1;
 	private double cenaPaketa2;
 	private double cenaPaketa3;
@@ -92,6 +95,24 @@ public class UserInfo {
 	}
 	public void setCenaPaketa3(double cenaPaketa3) {
 		this.cenaPaketa3 = cenaPaketa3;
+	}
+	public double getOsnovica1() {
+		return osnovica1;
+	}
+	public void setOsnovica1(double osnovica1) {
+		this.osnovica1 = osnovica1;
+	}
+	public double getOsnovica2() {
+		return osnovica2;
+	}
+	public void setOsnovica2(double osnovica2) {
+		this.osnovica2 = osnovica2;
+	}
+	public double getOsnovica3() {
+		return osnovica3;
+	}
+	public void setOsnovica3(double osnovica3) {
+		this.osnovica3 = osnovica3;
 	}
 	
 	
