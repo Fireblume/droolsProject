@@ -11,7 +11,6 @@ import java.util.List;
  */
 @Entity
 @Table(name="[PACKAGE]")
-@NamedQuery(name="Package.findAll", query="SELECT p FROM Package p")
 public class PackageP implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -24,19 +23,19 @@ public class PackageP implements Serializable {
 	private String torName;
 
 	//bi-directional many-to-one association to ItemsOfPackage
-	@OneToMany(mappedBy="package")
+	@OneToMany(mappedBy="packagep")
 	private List<ItemsOfPackage> itemsOfPackages;
 
 	//bi-directional many-to-one association to Policy
-	@OneToMany(mappedBy="package")
+	@OneToMany(mappedBy="packagep")
 	private List<Policy> policies;
 
 	//bi-directional many-to-one association to PricelistItem
-	@OneToMany(mappedBy="package")
+	@OneToMany(mappedBy="packagep")
 	private List<PricelistItem> pricelistItems;
 
 	//bi-directional many-to-one association to TypeOfInsurance
-	@OneToMany(mappedBy="package")
+	@OneToMany(mappedBy="packagep")
 	private List<TypeOfInsurance> typeOfInsurances;
 
 	public PackageP() {

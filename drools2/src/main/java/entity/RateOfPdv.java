@@ -12,7 +12,6 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name="RATE_OF_PDV")
-@NamedQuery(name="RateOfPdv.findAll", query="SELECT r FROM RateOfPdv r")
 public class RateOfPdv implements Serializable {
 	private static final long serialVersionUID = 1L;
 

@@ -6,6 +6,7 @@ import javax.ws.rs.core.Context;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,6 +16,7 @@ import main.java.pojo.UserInfo;
 import main.java.pojo.UserInfo.Destinacija;
 import main.java.pojo.UserInfo.TipRizika;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/package")
 public class PackageController {
@@ -25,6 +27,11 @@ public class PackageController {
 	     KieContainer kContainer = ks.getKieClasspathContainer();
 	     KieSession kSession =  kContainer.newKieSession(); 
 	     
+	     /*
+	      * Ovde trebam dobaviti podatke iz baze (dest, tip rizika, koef...)
+	      * pa podatke sa fronta
+	      * 
+	      */
 	     UserInfo item1 = new UserInfo();
 	     item1.setTipRizika(TipRizika.SLAB);
 	     item1.setDestinacija(Destinacija.SRBIJA);

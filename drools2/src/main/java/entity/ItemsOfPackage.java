@@ -10,7 +10,6 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="ITEMS_OF_PACKAGE")
-@NamedQuery(name="ItemsOfPackage.findAll", query="SELECT i FROM ItemsOfPackage i")
 public class ItemsOfPackage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
