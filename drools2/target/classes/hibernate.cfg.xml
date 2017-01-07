@@ -13,6 +13,7 @@
         <mapping class="main.java.entity.City"/>
         <mapping class="main.java.entity.Client"/>
         <mapping class="main.java.entity.Coefficient"/>
+        <mapping class="main.java.entity.Continent"/>
         <mapping class="main.java.entity.Currency"/>
         <mapping class="main.java.entity.Destination"/>
         <mapping class="main.java.entity.Employee"/>
