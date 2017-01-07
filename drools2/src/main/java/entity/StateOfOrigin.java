@@ -2,7 +2,6 @@ package main.java.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
@@ -22,9 +21,10 @@ public class StateOfOrigin implements Serializable {
 	@Column(name="ST_NAME")
 	private String stName;
 
-	//bi-directional many-to-one association to City
-	@OneToMany(mappedBy="stateOfOrigin")
-	private List<City> cities;
+	//bi-directional many-to-one association to Continent
+	@ManyToOne
+	@JoinColumn(name="CONTINENT_ID")
+	private Continent continent;
 
 	public StateOfOrigin() {
 	}
@@ -45,26 +45,12 @@ public class StateOfOrigin implements Serializable {
 		this.stName = stName;
 	}
 
-	public List<City> getCities() {
-		return this.cities;
+	public Continent getContinent() {
+		return this.continent;
 	}
 
-	public void setCities(List<City> cities) {
-		this.cities = cities;
-	}
-
-	public City addCity(City city) {
-		getCities().add(city);
-		city.setStateOfOrigin(this);
-
-		return city;
-	}
-
-	public City removeCity(City city) {
-		getCities().remove(city);
-		city.setStateOfOrigin(null);
-
-		return city;
+	public void setContinent(Continent continent) {
+		this.continent = continent;
 	}
 
 }
