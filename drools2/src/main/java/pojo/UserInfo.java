@@ -1,5 +1,7 @@
 package main.java.pojo;
 
+import java.math.BigDecimal;
+
 public class UserInfo {
 
 	public UserInfo(){}
@@ -12,16 +14,16 @@ public class UserInfo {
 	private int brDana;
 	private double koefOdraslih;
 	private double koefDece;
-	private double koefRizika;
+	private BigDecimal koefRizika;
 	private double koefDestinacije;
 	private TipRizika tipRizika;
 	private Destinacija destinacija;
-	private double osnovica1;
-	private double osnovica2;
-	private double osnovica3;
-	private double cenaPaketa1;
-	private double cenaPaketa2;
-	private double cenaPaketa3;
+	private BigDecimal osnovica1;
+	private BigDecimal osnovica2;
+	private BigDecimal osnovica3;
+	private BigDecimal cenaPaketa1;
+	private BigDecimal cenaPaketa2;
+	private BigDecimal cenaPaketa3;
 	
 	
 	public int getBrOdraslih() {
@@ -54,10 +56,10 @@ public class UserInfo {
 	public void setKoefDece(double koefDece) {
 		this.koefDece = koefDece;
 	}
-	public double getKoefRizika() {
+	public BigDecimal getKoefRizika() {
 		return koefRizika;
 	}
-	public void setKoefRizika(double koefRizika) {
+	public void setKoefRizika(BigDecimal koefRizika) {
 		this.koefRizika = koefRizika;
 	}
 	public double getKoefDestinacije() {
@@ -78,43 +80,41 @@ public class UserInfo {
 	public void setDestinacija(Destinacija destinacija) {
 		this.destinacija = destinacija;
 	}
-	public double getCenaPaketa1() {
-		return cenaPaketa1;
-	}
-	public void setCenaPaketa1(double cenaPaketa1) {
-		this.cenaPaketa1 = cenaPaketa1;
-	}
-	public double getCenaPaketa2() {
-		return cenaPaketa2;
-	}
-	public void setCenaPaketa2(double cenaPaketa2) {
-		this.cenaPaketa2 = cenaPaketa2;
-	}
-	public double getCenaPaketa3() {
-		return cenaPaketa3;
-	}
-	public void setCenaPaketa3(double cenaPaketa3) {
-		this.cenaPaketa3 = cenaPaketa3;
-	}
-	public double getOsnovica1() {
+	public BigDecimal getOsnovica1() {
 		return osnovica1;
 	}
-	public void setOsnovica1(double osnovica1) {
+	public void setOsnovica1(BigDecimal osnovica1) {
 		this.osnovica1 = osnovica1;
 	}
-	public double getOsnovica2() {
+	public BigDecimal getOsnovica2() {
 		return osnovica2;
 	}
-	public void setOsnovica2(double osnovica2) {
+	public void setOsnovica2(BigDecimal osnovica2) {
 		this.osnovica2 = osnovica2;
 	}
-	public double getOsnovica3() {
+	public BigDecimal getOsnovica3() {
 		return osnovica3;
 	}
-	public void setOsnovica3(double osnovica3) {
+	public void setOsnovica3(BigDecimal osnovica3) {
 		this.osnovica3 = osnovica3;
 	}
-	
-	
+	public BigDecimal getCenaPaketa1() {
+		return cenaPaketa1;
+	}
+	public void setCenaPaketa1(BigDecimal cenaPaketa1) {
+		this.cenaPaketa1 = cenaPaketa1;
+	}
+	public BigDecimal getCenaPaketa2() {
+		return cenaPaketa2;
+	}
+	public void setCenaPaketa2(BigDecimal cenaPaketa2) {
+		this.cenaPaketa2 = cenaPaketa2;
+	}
+	public BigDecimal getCenaPaketa3() {
+		return cenaPaketa3;
+	}
+	public void setCenaPaketa3(BigDecimal cenaPaketa3) {
+		this.cenaPaketa3 = cenaPaketa3;
+	}
 	
 }

@@ -10,6 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="BANK_ACCOUNT")
+@NamedQuery(name="BankAccount.findAll", query="SELECT b FROM BankAccount b")
 public class BankAccount implements Serializable {
 	private static final long serialVersionUID = 1L;
 

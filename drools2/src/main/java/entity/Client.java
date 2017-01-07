@@ -2,6 +2,7 @@ package main.java.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="CLIENT")
+@NamedQuery(name="Client.findAll", query="SELECT c FROM Client c")
 public class Client implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -32,8 +34,14 @@ public class Client implements Serializable {
 	@Column(name="LASTNAME")
 	private String lastname;
 
+	@Column(name="PASSPORT_NUMBER")
+	private BigDecimal passportNumber;
+
 	@Column(name="PHONE")
 	private String phone;
+
+	@Column(name="SEX")
+	private String sex;
 
 	//bi-directional many-to-one association to BankAccount
 	@OneToMany(mappedBy="client")
@@ -100,12 +108,28 @@ public class Client implements Serializable {
 		this.lastname = lastname;
 	}
 
+	public BigDecimal getPassportNumber() {
+		return this.passportNumber;
+	}
+
+	public void setPassportNumber(BigDecimal passportNumber) {
+		this.passportNumber = passportNumber;
+	}
+
 	public String getPhone() {
 		return this.phone;
 	}
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getSex() {
+		return this.sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
 	public List<BankAccount> getBankAccounts() {

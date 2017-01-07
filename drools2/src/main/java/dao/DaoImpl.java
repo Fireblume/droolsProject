@@ -27,16 +27,17 @@ public class DaoImpl<T, ID extends Serializable> implements Dao<T, ID>{
 	}
 
 	@Override
-	public void delete(ID id) {
+	public void delete(ID id, T classT) {
 		// TODO Auto-generated method stub
-		session.getCurrentSession().delete(findById(id));
+		session.getCurrentSession().delete(findById(id, classT));
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public T findById(ID id) {
+	public T findById(ID id, T classT) {
 		// TODO Auto-generated method stub
-		return (T)session.getCurrentSession().get((Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), DaoImpl.class), id);
+		//return (T)session.getCurrentSession().get((Class<T>) GenericTypeResolver.resolveTypeArgument(getClass(), DaoImpl.class), id);
+		return (T)session.getCurrentSession().get(classT.getClass(), id);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -46,5 +47,14 @@ public class DaoImpl<T, ID extends Serializable> implements Dao<T, ID>{
 		return session.getCurrentSession().createQuery("from " + table).list();
 	}
 
+	public SessionFactory getSession() {
+		return session;
+	}
+
+	public void setSession(SessionFactory session) {
+		this.session = session;
+	}
+
+	
 }
 

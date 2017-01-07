@@ -10,6 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="ITEMS_OF_PACKAGE")
+@NamedQuery(name="ItemsOfPackage.findAll", query="SELECT i FROM ItemsOfPackage i")
 public class ItemsOfPackage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -18,10 +19,10 @@ public class ItemsOfPackage implements Serializable {
 	@Column(name="ITEMS_OF_PACKAGE_ID")
 	private int itemsOfPackageId;
 
-	//bi-directional many-to-one association to Package
+	//bi-directional many-to-one association to InsurancePackage
 	@ManyToOne
 	@JoinColumn(name="PACKAGE_ID")
-	private PackageP packagep;
+	private InsurancePackage insurancePackage;
 
 	public ItemsOfPackage() {
 	}
@@ -34,12 +35,12 @@ public class ItemsOfPackage implements Serializable {
 		this.itemsOfPackageId = itemsOfPackageId;
 	}
 
-	public PackageP getPackage() {
-		return this.packagep;
+	public InsurancePackage getInsurancePackage() {
+		return this.insurancePackage;
 	}
 
-	public void setPackage(PackageP packagep) {
-		this.packagep = packagep;
+	public void setInsurancePackage(InsurancePackage insurancePackage) {
+		this.insurancePackage = insurancePackage;
 	}
 
 }

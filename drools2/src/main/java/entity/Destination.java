@@ -11,6 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="DESTINATION")
+@NamedQuery(name="Destination.findAll", query="SELECT d FROM Destination d")
 public class Destination implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -24,6 +25,11 @@ public class Destination implements Serializable {
 
 	@Column(name="DST_NAME")
 	private String dstName;
+
+	//bi-directional many-to-one association to StateOfOrigin
+	@ManyToOne
+	@JoinColumn(name="ST_ID")
+	private StateOfOrigin stateOfOrigin;
 
 	//bi-directional many-to-one association to SubjectOfInsurance
 	@OneToMany(mappedBy="destination")
@@ -54,6 +60,14 @@ public class Destination implements Serializable {
 
 	public void setDstName(String dstName) {
 		this.dstName = dstName;
+	}
+
+	public StateOfOrigin getStateOfOrigin() {
+		return this.stateOfOrigin;
+	}
+
+	public void setStateOfOrigin(StateOfOrigin stateOfOrigin) {
+		this.stateOfOrigin = stateOfOrigin;
 	}
 
 	public List<SubjectOfInsurance> getSubjectOfInsurances() {

@@ -11,6 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="TYPE_OF_INSURANCE")
+@NamedQuery(name="TypeOfInsurance.findAll", query="SELECT t FROM TypeOfInsurance t")
 public class TypeOfInsurance implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -30,10 +31,10 @@ public class TypeOfInsurance implements Serializable {
 	@OneToMany(mappedBy="typeOfInsurance")
 	private List<SubjectOfInsurance> subjectOfInsurances;
 
-	//bi-directional many-to-one association to Package
+	//bi-directional many-to-one association to InsurancePackage
 	@ManyToOne
 	@JoinColumn(name="PACKAGE_ID")
-	private PackageP packagep;
+	private InsurancePackage insurancePackage;
 
 	public TypeOfInsurance() {
 	}
@@ -84,12 +85,12 @@ public class TypeOfInsurance implements Serializable {
 		return subjectOfInsurance;
 	}
 
-	public PackageP getPackage() {
-		return this.packagep;
+	public InsurancePackage getInsurancePackage() {
+		return this.insurancePackage;
 	}
 
-	public void setPackage(PackageP packagep) {
-		this.packagep = packagep;
+	public void setInsurancePackage(InsurancePackage insurancePackage) {
+		this.insurancePackage = insurancePackage;
 	}
 
 }

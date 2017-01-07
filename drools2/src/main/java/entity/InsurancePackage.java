@@ -6,12 +6,13 @@ import java.util.List;
 
 
 /**
- * The persistent class for the [PACKAGE] database table.
+ * The persistent class for the INSURANCE_PACKAGE database table.
  * 
  */
 @Entity
-@Table(name="[PACKAGE]")
-public class PackageP implements Serializable {
+@Table(name="INSURANCE_PACKAGE")
+@NamedQuery(name="InsurancePackage.findAll", query="SELECT i FROM InsurancePackage i")
+public class InsurancePackage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -22,23 +23,24 @@ public class PackageP implements Serializable {
 	@Column(name="TOR_NAME")
 	private String torName;
 
+	//bi-directional many-to-one association to PricelistItem
+	@ManyToOne
+	@JoinColumn(name="PL_ITEM_ID")
+	private PricelistItem pricelistItem;
+
 	//bi-directional many-to-one association to ItemsOfPackage
-	@OneToMany(mappedBy="packagep")
+	@OneToMany(mappedBy="insurancePackage")
 	private List<ItemsOfPackage> itemsOfPackages;
 
 	//bi-directional many-to-one association to Policy
-	@OneToMany(mappedBy="packagep")
+	@OneToMany(mappedBy="insurancePackage")
 	private List<Policy> policies;
 
-	//bi-directional many-to-one association to PricelistItem
-	@OneToMany(mappedBy="packagep")
-	private List<PricelistItem> pricelistItems;
-
 	//bi-directional many-to-one association to TypeOfInsurance
-	@OneToMany(mappedBy="packagep")
+	@OneToMany(mappedBy="insurancePackage")
 	private List<TypeOfInsurance> typeOfInsurances;
 
-	public PackageP() {
+	public InsurancePackage() {
 	}
 
 	public int getPackageId() {
@@ -57,6 +59,14 @@ public class PackageP implements Serializable {
 		this.torName = torName;
 	}
 
+	public PricelistItem getPricelistItem() {
+		return this.pricelistItem;
+	}
+
+	public void setPricelistItem(PricelistItem pricelistItem) {
+		this.pricelistItem = pricelistItem;
+	}
+
 	public List<ItemsOfPackage> getItemsOfPackages() {
 		return this.itemsOfPackages;
 	}
@@ -67,14 +77,14 @@ public class PackageP implements Serializable {
 
 	public ItemsOfPackage addItemsOfPackage(ItemsOfPackage itemsOfPackage) {
 		getItemsOfPackages().add(itemsOfPackage);
-		itemsOfPackage.setPackage(this);
+		itemsOfPackage.setInsurancePackage(this);
 
 		return itemsOfPackage;
 	}
 
 	public ItemsOfPackage removeItemsOfPackage(ItemsOfPackage itemsOfPackage) {
 		getItemsOfPackages().remove(itemsOfPackage);
-		itemsOfPackage.setPackage(null);
+		itemsOfPackage.setInsurancePackage(null);
 
 		return itemsOfPackage;
 	}
@@ -89,38 +99,16 @@ public class PackageP implements Serializable {
 
 	public Policy addPolicy(Policy policy) {
 		getPolicies().add(policy);
-		policy.setPackage(this);
+		policy.setInsurancePackage(this);
 
 		return policy;
 	}
 
 	public Policy removePolicy(Policy policy) {
 		getPolicies().remove(policy);
-		policy.setPackage(null);
+		policy.setInsurancePackage(null);
 
 		return policy;
-	}
-
-	public List<PricelistItem> getPricelistItems() {
-		return this.pricelistItems;
-	}
-
-	public void setPricelistItems(List<PricelistItem> pricelistItems) {
-		this.pricelistItems = pricelistItems;
-	}
-
-	public PricelistItem addPricelistItem(PricelistItem pricelistItem) {
-		getPricelistItems().add(pricelistItem);
-		pricelistItem.setPackage(this);
-
-		return pricelistItem;
-	}
-
-	public PricelistItem removePricelistItem(PricelistItem pricelistItem) {
-		getPricelistItems().remove(pricelistItem);
-		pricelistItem.setPackage(null);
-
-		return pricelistItem;
 	}
 
 	public List<TypeOfInsurance> getTypeOfInsurances() {
@@ -133,14 +121,14 @@ public class PackageP implements Serializable {
 
 	public TypeOfInsurance addTypeOfInsurance(TypeOfInsurance typeOfInsurance) {
 		getTypeOfInsurances().add(typeOfInsurance);
-		typeOfInsurance.setPackage(this);
+		typeOfInsurance.setInsurancePackage(this);
 
 		return typeOfInsurance;
 	}
 
 	public TypeOfInsurance removeTypeOfInsurance(TypeOfInsurance typeOfInsurance) {
 		getTypeOfInsurances().remove(typeOfInsurance);
-		typeOfInsurance.setPackage(null);
+		typeOfInsurance.setInsurancePackage(null);
 
 		return typeOfInsurance;
 	}

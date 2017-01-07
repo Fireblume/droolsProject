@@ -11,6 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="SUBJECT_OF_INSURANCE")
+@NamedQuery(name="SubjectOfInsurance.findAll", query="SELECT s FROM SubjectOfInsurance s")
 public class SubjectOfInsurance implements Serializable {
 	private static final long serialVersionUID = 1L;
 

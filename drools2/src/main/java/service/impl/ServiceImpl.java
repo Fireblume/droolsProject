@@ -28,15 +28,15 @@ public class ServiceImpl<T, ID extends Serializable> implements Service<T, ID>{
 	}
 
 	@Transactional
-	public void delete(ID id) {
+	public void delete(ID id, T classT) {
 		// TODO Auto-generated method stub
-		dao.delete(id);
+		dao.delete(id, classT);
 	}
 
 	@Transactional
-	public T findById(ID id) {
+	public T findById(ID id, T classT) {
 		// TODO Auto-generated method stub
-		return dao.findById(id);
+		return dao.findById(id, classT);
 	}
 
 	@Transactional

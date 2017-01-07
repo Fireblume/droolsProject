@@ -12,6 +12,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="POLICY")
+@NamedQuery(name="Policy.findAll", query="SELECT p FROM Policy p")
 public class Policy implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -55,10 +56,10 @@ public class Policy implements Serializable {
 	@JoinColumn(name="CP_ID")
 	private InsuranceCompany insuranceCompany;
 
-	//bi-directional many-to-one association to Package
+	//bi-directional many-to-one association to InsurancePackage
 	@ManyToOne
 	@JoinColumn(name="PACKAGE_ID")
-	private PackageP packagep;
+	private InsurancePackage insurancePackage;
 
 	//bi-directional many-to-one association to Pdv
 	@ManyToOne
@@ -164,12 +165,12 @@ public class Policy implements Serializable {
 		this.insuranceCompany = insuranceCompany;
 	}
 
-	public PackageP getPackage() {
-		return this.packagep;
+	public InsurancePackage getInsurancePackage() {
+		return this.insurancePackage;
 	}
 
-	public void setPackage(PackageP packagep) {
-		this.packagep = packagep;
+	public void setInsurancePackage(InsurancePackage insurancePackage) {
+		this.insurancePackage = insurancePackage;
 	}
 
 	public Pdv getPdv() {

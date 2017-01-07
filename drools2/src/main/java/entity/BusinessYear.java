@@ -11,6 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="BUSINESS_YEAR")
+@NamedQuery(name="BusinessYear.findAll", query="SELECT b FROM BusinessYear b")
 public class BusinessYear implements Serializable {
 	private static final long serialVersionUID = 1L;
 

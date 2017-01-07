@@ -11,6 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="CONTINENT")
+@NamedQuery(name="Continent.findAll", query="SELECT c FROM Continent c")
 public class Continent implements Serializable {
 	private static final long serialVersionUID = 1L;
 

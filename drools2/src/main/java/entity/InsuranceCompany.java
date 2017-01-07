@@ -11,6 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="INSURANCE_COMPANY")
+@NamedQuery(name="InsuranceCompany.findAll", query="SELECT i FROM InsuranceCompany i")
 public class InsuranceCompany implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -24,6 +25,10 @@ public class InsuranceCompany implements Serializable {
 
 	@Column(name="PIB")
 	private int pib;
+
+	//bi-directional many-to-one association to Pricelist
+	@OneToMany(mappedBy="insuranceCompany")
+	private List<Pricelist> pricelists;
 
 	//bi-directional many-to-one association to BankAccount
 	@OneToMany(mappedBy="insuranceCompany")
@@ -45,10 +50,6 @@ public class InsuranceCompany implements Serializable {
 	//bi-directional many-to-one association to Policy
 	@OneToMany(mappedBy="insuranceCompany")
 	private List<Policy> policies;
-
-	//bi-directional many-to-one association to Pricelist
-	@OneToMany(mappedBy="insuranceCompany")
-	private List<Pricelist> pricelists;
 
 	public InsuranceCompany() {
 	}
@@ -75,6 +76,28 @@ public class InsuranceCompany implements Serializable {
 
 	public void setPib(int pib) {
 		this.pib = pib;
+	}
+
+	public List<Pricelist> getPricelists() {
+		return this.pricelists;
+	}
+
+	public void setPricelists(List<Pricelist> pricelists) {
+		this.pricelists = pricelists;
+	}
+
+	public Pricelist addPricelist(Pricelist pricelist) {
+		getPricelists().add(pricelist);
+		pricelist.setInsuranceCompany(this);
+
+		return pricelist;
+	}
+
+	public Pricelist removePricelist(Pricelist pricelist) {
+		getPricelists().remove(pricelist);
+		pricelist.setInsuranceCompany(null);
+
+		return pricelist;
 	}
 
 	public List<BankAccount> getBankAccounts() {
@@ -171,28 +194,6 @@ public class InsuranceCompany implements Serializable {
 		policy.setInsuranceCompany(null);
 
 		return policy;
-	}
-
-	public List<Pricelist> getPricelists() {
-		return this.pricelists;
-	}
-
-	public void setPricelists(List<Pricelist> pricelists) {
-		this.pricelists = pricelists;
-	}
-
-	public Pricelist addPricelist(Pricelist pricelist) {
-		getPricelists().add(pricelist);
-		pricelist.setInsuranceCompany(this);
-
-		return pricelist;
-	}
-
-	public Pricelist removePricelist(Pricelist pricelist) {
-		getPricelists().remove(pricelist);
-		pricelist.setInsuranceCompany(null);
-
-		return pricelist;
 	}
 
 }

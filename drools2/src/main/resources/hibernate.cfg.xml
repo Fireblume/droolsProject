@@ -21,7 +21,7 @@
         <mapping class="main.java.entity.Home"/>
         <mapping class="main.java.entity.InsuranceCompany"/>
         <mapping class="main.java.entity.ItemsOfPackage"/>
-        <mapping class="main.java.entity.PackageP"/>
+        <mapping class="main.java.entity.InsurancePackage"/>
         <mapping class="main.java.entity.Pdv"/>
         <mapping class="main.java.entity.Policy"/>
         <mapping class="main.java.entity.Pricelist"/>

@@ -3,6 +3,7 @@ package main.java.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 
 /**
@@ -11,6 +12,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name="PRICELIST_ITEM")
+@NamedQuery(name="PricelistItem.findAll", query="SELECT p FROM PricelistItem p")
 public class PricelistItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -22,10 +24,9 @@ public class PricelistItem implements Serializable {
 	@Column(name="PL_PRICE")
 	private BigDecimal plPrice;
 
-	//bi-directional many-to-one association to Package
-	@ManyToOne
-	@JoinColumn(name="PACKAGE_ID")
-	private PackageP packagep;
+	//bi-directional many-to-one association to InsurancePackage
+	@OneToMany(mappedBy="pricelistItem")
+	private List<InsurancePackage> insurancePackages;
 
 	//bi-directional many-to-one association to Pricelist
 	@ManyToOne
@@ -51,12 +52,26 @@ public class PricelistItem implements Serializable {
 		this.plPrice = plPrice;
 	}
 
-	public PackageP getPackage() {
-		return this.packagep;
+	public List<InsurancePackage> getInsurancePackages() {
+		return this.insurancePackages;
 	}
 
-	public void setPackage(PackageP packagep) {
-		this.packagep = packagep;
+	public void setInsurancePackages(List<InsurancePackage> insurancePackages) {
+		this.insurancePackages = insurancePackages;
+	}
+
+	public InsurancePackage addInsurancePackage(InsurancePackage insurancePackage) {
+		getInsurancePackages().add(insurancePackage);
+		insurancePackage.setPricelistItem(this);
+
+		return insurancePackage;
+	}
+
+	public InsurancePackage removeInsurancePackage(InsurancePackage insurancePackage) {
+		getInsurancePackages().remove(insurancePackage);
+		insurancePackage.setPricelistItem(null);
+
+		return insurancePackage;
 	}
 
 	public Pricelist getPricelist() {
